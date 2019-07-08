@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 	"os"
 	"os/user"
+	"os/exec"
 	"time"
 
 	"strings"
@@ -136,14 +137,29 @@ func reloadConfig() {
 	return
 }
 
+func openConfig(mOpenConfig *systray.MenuItem) {
+
+	<-mOpenConfig.ClickedCh
+	out, err := exec.Command("sh", "-c", "open -t "+CONFIG_FILE).Output()
+
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(out)
+	openConfig(mOpenConfig)
+}
+
 func onReady() {
+	mOpenConfig := systray.AddMenuItem("Config", "Edit apps config file")
 	mQuitOrig := systray.AddMenuItem("Quit", "Quit the whole app")
 	go func() {
 		<-mQuitOrig.ClickedCh
 		os.Exit(1)
 	}()
+	go openConfig(mOpenConfig)
 
-	ticker := time.NewTicker(300 * time.Millisecond)
+	// ticker := time.NewTicker(300 * time.Millisecond)
+	ticker := time.NewTicker(1000 * time.Millisecond)
 	quit := make(chan struct{})
 
 	go func() {
