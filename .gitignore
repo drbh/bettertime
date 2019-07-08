@@ -4,3 +4,4 @@ Info.plist
 target/*
 certs/*
 bin/main
+user-config.go
