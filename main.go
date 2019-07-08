@@ -23,7 +23,8 @@ type TimeZoneNamingPair struct {
 }
 
 const (
-	TIME_FORMAT = "15:04:05"
+	// TIME_FORMAT = "15:04:05"
+	TIME_FORMAT = "15:04"
 )
 
 var GLOBAL_LIST = []TimeZoneNamingPair{}
