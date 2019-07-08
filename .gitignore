@@ -1,0 +1,6 @@
+env
+building-mas
+Info.plist
+target/*
+certs/*
+bin/main
