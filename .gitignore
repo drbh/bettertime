@@ -5,3 +5,4 @@ target/*
 certs/*
 bin/main
 user-config.go
+images/demo.mov
