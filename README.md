@@ -1,4 +1,4 @@
 # bettertime
 
 
-![images/screenshot.png](images/screenshot.png)
+![images/demo.gif](images/demo.gif)
